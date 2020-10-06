@@ -20,12 +20,12 @@ RUN git clone --depth=1 https://github.com/jvm-profiling-tools/async-profiler /a
 #
 FROM ubuntu:groovy
 
-COPY --from=builder /async-profiler /async-profiler
-
 RUN apt update && apt install -y openjdk-15-dbg
 
+COPY --from=builder /async-profiler /usr/lib/async-profiler
+
 ENV JAVA_HOME=/usr/lib/jvm/java-15-openjdk-amd64
-ENV PROFILER_HOME=/async-profiler
+ENV PROFILER_HOME=/usr/lib/async-profiler
 ENV PATH=$PATH:$PROFILER_HOME:$JAVA_HOME/bin
 
 CMD ["jshell"]
