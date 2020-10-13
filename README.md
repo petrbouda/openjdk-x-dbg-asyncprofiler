@@ -20,7 +20,8 @@ docker build -t openjdk-15-dbg-asyncprofiler:latest .
         </to>
         <container>
             <jvmFlags>
-                <jvmFlag>-XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints</jvmFlag>
+                <jvmFlag>-XX:+UnlockDiagnosticVMOptions</jvmFlag>
+                <jvmFlag>-XX:+DebugNonSafepoints</jvmFlag>
             </jvmFlags>
         </container>
     </configuration>
