@@ -61,3 +61,14 @@ root      342895    342878    99        10:50     pts/0     00:00:07  java -cp
 sudo /usr/lib/async-profiler/profiler.sh -d 10 -t -f /tmp/asyncprofiler/cpu.svg 342895
 ```
 
+### External Debug Symbols
+
+- stored externally from an executable file using a build ID 
+- https://sourceware.org/gdb/onlinedocs/gdb/Separate-Debug-Files.html
+
+```
+$ cd /usr/lib/debug/.build-id
+$ grep -r "_ZN15G1CollectedHeap22humongous_obj_allocateEm" .
+Binary file ./eb/180e47f20c56d564b6064be501f0f46c7e0ffe.debug matches
+$ nm -an ./eb/180e47f20c56d564b6064be501f0f46c7e0ffe.debug | c++filt 
+```
