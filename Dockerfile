@@ -21,6 +21,7 @@ RUN git clone --depth=1 https://github.com/jvm-profiling-tools/async-profiler /a
 FROM ubuntu:groovy
 
 RUN apt update && apt install -y openjdk-15-dbg
+RUN apt install -y binutils
 
 COPY --from=builder /async-profiler /usr/lib/async-profiler
 
