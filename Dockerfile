@@ -23,11 +23,7 @@ RUN git clone --depth=1 https://github.com/jvm-profiling-tools/async-profiler /a
 #
 FROM ubuntu:groovy
 
-RUN apt update && apt install -y openjdk-15-dbg
-
-RUN apt install -y wget
-RUN wget -O /tmp/jvm.tar.gz https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
-RUN chmod 777 /tmp/jvm.tar.gz && tar -xf /tmp/jvm.tar.gz -C /usr/lib/jvm && rm /tmp/jvm.tar.gz
+RUN apt update && apt install -y openjdk-15-dbg openjdk-15-jdk
 
 # Install necessary tools
 RUN apt install -y binutils
