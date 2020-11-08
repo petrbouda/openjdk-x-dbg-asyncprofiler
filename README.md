@@ -41,7 +41,7 @@ docker build -t openjdk-15-dbg-asyncprofiler:latest .
 docker run -it --rm --network host --name tested-app -v /tmp/asyncprofiler:/tmp/asyncprofiler --security-opt seccomp=unconfined tested-app:latest
 
 # Start profiling
-docker exec -ti tested-app profiler.sh 60 -t -f /tmp/async-profiler/cpu.svg 1
+docker exec -ti tested-app profiler.sh 60 -t -f /tmp/asyncprofiler/cpu.svg 1
 
 # Grep result
 cd /tmp/asyncprofiler
