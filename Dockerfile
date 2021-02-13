@@ -11,7 +11,7 @@ FROM adoptopenjdk/openjdk11 AS builder
 
 RUN apt update && apt install -y cmake g++ git
 
-RUN git clone --depth=1 https://github.com/jvm-profiling-tools/async-profiler /async-profiler &&\
+RUN git clone --depth=1 -b v2.0 https://github.com/jvm-profiling-tools/async-profiler /async-profiler &&\
     cd /async-profiler &&\
     make
 
