@@ -7,11 +7,11 @@
 #
 # THE FIRST STAGE - build `async-profiler`
 #
-FROM adoptopenjdk/openjdk11 AS builder
+FROM ubuntu AS builder
 
-RUN apt update && apt install -y cmake g++ git
+RUN apt update && apt install -y openjdk-21-jdk cmake g++ git
 
-RUN git clone --depth=1 -b v2.0 https://github.com/jvm-profiling-tools/async-profiler /async-profiler &&\
+RUN git clone --depth=1 https://github.com/jvm-profiling-tools/async-profiler /async-profiler &&\
     cd /async-profiler &&\
     make
 
@@ -21,16 +21,16 @@ RUN git clone --depth=1 -b v2.0 https://github.com/jvm-profiling-tools/async-pro
 # - download AdoptOpenJDK that contains all other OpenJDK tools (e.g. jcmd)
 # - copy `async-profiler`
 #
-FROM ubuntu:groovy
+FROM ubuntu
 
-RUN apt update && apt install -y openjdk-15-dbg openjdk-15-jdk
+RUN apt update && apt install -y openjdk-21-dbg openjdk-21-jdk
 
 # Install necessary tools
 RUN apt install -y binutils
 
 COPY --from=builder /async-profiler /usr/lib/async-profiler
 
-ENV JAVA_HOME=/usr/lib/jvm/java-15-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PROFILER_HOME=/usr/lib/async-profiler
 ENV PATH=$PATH:$PROFILER_HOME:$JAVA_HOME/bin
 

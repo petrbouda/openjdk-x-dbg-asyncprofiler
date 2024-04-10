@@ -1,10 +1,10 @@
 # OpenJDK Docker Imager with Debugging Symbols and AsyncProfiler
 
 ```
-docker build -t openjdk-15-dbg-asyncprofiler:latest .
+docker build -t openjdk-21-dbg-asyncprofiler:latest .
 ```
 
-- use `openjdk-15-dbg-asyncprofiler:latest` as a base image
+- use `openjdk-21-dbg-asyncprofiler:latest` as a base image
 
 ```
 <plugin>
@@ -13,7 +13,7 @@ docker build -t openjdk-15-dbg-asyncprofiler:latest .
     <version>2.5.2</version>
     <configuration>
         <from>
-            <image>docker://openjdk-15-dbg-asyncprofiler:latest</image>
+            <image>docker://openjdk-21-dbg-asyncprofiler:latest</image>
         </from>
         <to>
             <image>tested-app:latest</image>
